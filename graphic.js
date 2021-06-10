@@ -6,16 +6,9 @@ export class Grafik_400 {
       this.background_color = background_color;
       this.scales = scales;
       this.labels = labels;
-      this.typeError = (param, type) => {
-        
-         if (typeof param !== type) {
-           throw new Error(`Le parametre ${param} doit être de type ${type}`);
-         }
-      }
+      
     }
-  draw_labels(data_font, color) {
-      this.typeError(data_font, "string");
-      this.typeError(color, "string");
+  draw_labels(data_font, color) {     
       let t = 130;
       for (let i = 0; i < this.labels.length; i++) {
         this.draw_words(color, data_font, this.labels[i], t, 440);
@@ -24,9 +17,6 @@ export class Grafik_400 {
     }
 
   draw_scales(data_font, color) {
-      this.typeError(data_font, "string");
-      this.typeError(color, "string");
-      
       let t = 400;
       for (let i = 0; i < this.scales.length; i++) {
         this.draw_words(color, data_font, this.scales[i], 50, t);
@@ -46,8 +36,7 @@ export class Grafik_400 {
      * Display the background with lines
      * @param {String} color color of the line
      */
-  background_line(color) {
-      this.typeError(color, 'string');
+  background_line(color) {     
       this.context.fillStyle = this.background_color;
       this.context.fillRect(100, 0, 400, 400);
       this.context.beginPath();
@@ -66,10 +55,6 @@ export class Grafik_400 {
      * @param {Array} arr_color colors for histograms
      */
   histogram(arr_data, arr_color) {
-      this.typeError(arr_data, "object");
-      this.typeError(arr_data, "object");
-     
-
       let t = 130;
       let n = 0;
       for (let i = 0; i < arr_data.length; i++) {
@@ -100,8 +85,6 @@ export class Grafik_400 {
    * @param {Number} y 
    */
     draw_words(color, data_font, data, x, y) {
- 
-
       this.context.fillStyle = color;
       this.context.font = data_font;
       this.context.fillText(data, x, y);
@@ -138,9 +121,7 @@ export class Grafik_400_lineChart extends Grafik_400 {
      *
      * @memberof Grafik_400_lineChart
      */
-  draw_point(colorPoint, colorLine) {
-      this.typeError(colorPoint, "string");
-      this.typeError(colorPoint, "string");
+  draw_point(colorPoint, colorLine) {   
       for (let i = 0; i < this.data.length; i++) {
         this.draw_fill_circle(
           {
@@ -174,11 +155,6 @@ export class Grafik_400_lineChart extends Grafik_400 {
     }
 
   draw_line(color, x, y, x_dest, y_dest) {
-      this.typeError(color, "string");
-      this.typeError(x, "number");
-      this.typeError(y, "number");
-      this.typeError(y_dest, "number");
-      this.typeError(x_dest, "number");
       this.context.beginPath();
       this.context.strokeStyle = color;
       this.context.moveTo(x, y);
