@@ -1,6 +1,17 @@
 
 
+/**
+ *
+ *
+ * @export
+ * @class Grafik_400
+ */
 export class Grafik_400 {
+    /**
+     *Creates an instance of Grafik_400.
+     * @param {{context:CanvasRenderingContext2D, background_color:String,labels:Array<String>, scales:String}} { context, background_color, labels, scales }
+     * @memberof Grafik_400
+     */
     constructor({ context, background_color, labels, scales }) {
       this.context = context;
       this.background_color = background_color;
@@ -8,6 +19,13 @@ export class Grafik_400 {
       this.labels = labels;
       
     }
+  /**
+   * Allows display labels on graph
+   *
+   * @param {String} data_font
+   * @param {String} color
+   * @memberof Grafik_400
+   */
   draw_labels(data_font, color) {     
       let t = 130;
       for (let i = 0; i < this.labels.length; i++) {
@@ -16,6 +34,13 @@ export class Grafik_400 {
       }
     }
 
+  /**
+   *
+   * Allows display scales for graph
+   * @param {String} data_font
+   * @param {String} color
+   * @memberof Grafik_400
+   */
   draw_scales(data_font, color) {
       let t = 400;
       for (let i = 0; i < this.scales.length; i++) {
@@ -51,8 +76,8 @@ export class Grafik_400 {
     }
 
     /** Make a histogram graphic
-     * @param {Array} arr_data data for display
-     * @param {Array} arr_color colors for histograms
+     * @param {Array<Number>} arr_data data for display
+     * @param {Array<String>} arr_color colors for histograms
      */
   histogram(arr_data, arr_color) {
       let t = 130;
@@ -146,6 +171,14 @@ export class Grafik_400_lineChart extends Grafik_400 {
       }
     }
 
+    /**
+     *
+     *
+     * @param {{color: String, radius: Number, lineWidth: String}} { color, radius, lineWidth }
+     * @param {Number} dataX
+     * @param {Number} dataY
+     * @memberof Grafik_400_lineChart
+     */
     draw_fill_circle({ color, radius, lineWidth }, dataX, dataY) {
       this.context.beginPath();
       this.context.fillStyle = color;
@@ -154,6 +187,16 @@ export class Grafik_400_lineChart extends Grafik_400 {
       this.context.fill();
     }
 
+  /**
+   *
+   *
+   * @param {String} color
+   * @param {Number} x
+   * @param {Number} y
+   * @param {Number} x_dest
+   * @param {Number} y_dest
+   * @memberof Grafik_400_lineChart
+   */
   draw_line(color, x, y, x_dest, y_dest) {
       this.context.beginPath();
       this.context.strokeStyle = color;
