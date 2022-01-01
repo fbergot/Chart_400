@@ -25,10 +25,10 @@ const canvas2 = qrySel("canvas2");
 const ctx2 = canvas2.getContext("2d");
 
 const graph2 = new Chart_400({
-  context: ctx2,
-  background_color: "#fff",
-  labels: ["Volvo", "Renault", "Ford", "Toyota"],
-  scales: ["0%", "100%", "200%", "300%"],
+	context: ctx2,
+	background_color: "#fff",
+	labels: ["Volvo", "Renault", "Ford", "Toyota"],
+	scales: ["0%", "100%", "200%", "300%"],
 });
 
 graph2.background_line("black");
@@ -41,28 +41,28 @@ const canvas3 = qrySel("canvas3");
 const ctx3 = canvas3.getContext("2d");
 
 const graph3 = new Chart_400_lineChart({
-  context: ctx3,
-  background_color: "#144",
-  labels: ["Janvier", "Février", "Mars", "Avril"],
-  scales: ["0%", "20%", "40%", "60%"],
-  data: [
-    {
-      x: 100 + 50,
-      y: 350,
-    },
-    {
-      x: 150 + 100,
-      y: 300,
-    },
-    {
-      x: 250 + 100,
-      y: 180,
-    },
-    {
-      x: 350 + 100,
-      y: 140,
-    },
-  ],
+	context: ctx3,
+	background_color: "#144",
+	labels: ["Janvier", "Février", "Mars", "Avril"],
+	scales: ["0%", "20%", "40%", "60%"],
+	data: [
+		{
+			x: 100 + 50,
+			y: 350,
+		},
+		{
+			x: 150 + 100,
+			y: 300,
+		},
+		{
+			x: 250 + 100,
+			y: 180,
+		},
+		{
+			x: 350 + 100,
+			y: 140,
+		},
+	],
 });
 
 graph3.background();
