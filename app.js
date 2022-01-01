@@ -1,12 +1,12 @@
-import {Grafik_400, Grafik_400_lineChart} from './graphic.js';
+import { Chart_400, Chart_400_lineChart } from './Chart.js';
 const qrySel = (id) => document.querySelector(`#${id}`);
 
 
-// creation graph 1
+// creation chart 1
 const canvas1 = qrySel('canvas1');
 const ctx1 = canvas1.getContext("2d");
 
-const graph = new Grafik_400({
+const graph = new Chart_400({
     context: ctx1,
     background_color: '#bbf',
     labels: ['1990', "2000", '2010', "2020"],
@@ -20,11 +20,11 @@ graph.draw_scales("bold 15px Arial", "red");
 graph.histogram([80, 150, 220, 160], ['blue', 'grey', 'green', 'purple']);
 
 
-// 
+// chart 2
 const canvas2 = qrySel("canvas2");
 const ctx2 = canvas2.getContext("2d");
 
-const graph2 = new Grafik_400({
+const graph2 = new Chart_400({
   context: ctx2,
   background_color: "#fff",
   labels: ["Volvo", "Renault", "Ford", "Toyota"],
@@ -36,11 +36,11 @@ graph2.draw_labels("bold 15px Arial", "black");
 graph2.draw_scales("bold 15px Arial", "black");
 graph2.histogram([30, 100, 60, 260], ["blue", "grey", "blue", "grey"]);
 
-// 
+// chart 3
 const canvas3 = qrySel("canvas3");
 const ctx3 = canvas3.getContext("2d");
 
-const graph3 = new Grafik_400_lineChart({
+const graph3 = new Chart_400_lineChart({
   context: ctx3,
   background_color: "#144",
   labels: ["Janvier", "Février", "Mars", "Avril"],

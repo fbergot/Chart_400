@@ -1,12 +1,10 @@
-
-
 /**
  *
  *
  * @export
  * @class Grafik_400
  */
-export class Grafik_400 {
+export class Chart_400 {
     /**
      *Creates an instance of Grafik_400.
      * @param {{context:CanvasRenderingContext2D, background_color:String,labels:Array<String>, scales:String}} { context, background_color, labels, scales }
@@ -21,7 +19,6 @@ export class Grafik_400 {
     }
   /**
    * Allows display labels on graph
-   *
    * @param {String} data_font
    * @param {String} color
    * @memberof Grafik_400
@@ -53,55 +50,54 @@ export class Grafik_400 {
      * Display the background with a instance background_color
      */
     background() {
-      this.context.fillStyle = this.background_color;
-      this.context.fillRect(100, 0, 400, 400);
+		this.context.fillStyle = this.background_color;
+		this.context.fillRect(100, 0, 400, 400);
     }
 
     /**
      * Display the background with lines
      * @param {String} color color of the line
      */
-  background_line(color) {     
-      this.context.fillStyle = this.background_color;
-      this.context.fillRect(100, 0, 400, 400);
-      this.context.beginPath();
-      this.context.strokeStyle = color;
-      this.context.moveTo(100, 300);
-      this.context.lineTo(500, 300);
-      this.context.moveTo(100, 200);
-      this.context.lineTo(500, 200);
-      this.context.moveTo(100, 100);
-      this.context.lineTo(500, 100);
-      this.context.stroke();
+    background_line(color) {     
+        this.context.fillStyle = this.background_color;
+        this.context.fillRect(100, 0, 400, 400);
+        this.context.beginPath();
+        this.context.strokeStyle = color;
+        this.context.moveTo(100, 300);
+        this.context.lineTo(500, 300);
+        this.context.moveTo(100, 200);
+        this.context.lineTo(500, 200);
+        this.context.moveTo(100, 100);
+        this.context.lineTo(500, 100);
+        this.context.stroke();
     }
 
     /** Make a histogram graphic
      * @param {Array<Number>} arr_data data for display
      * @param {Array<String>} arr_color colors for histograms
      */
-  histogram(arr_data, arr_color) {
-      let t = 130;
-      let n = 0;
-      for (let i = 0; i < arr_data.length; i++) {
-        let calc = 400 - arr_data[i];
-        this.draw_rect(t, calc, 40, arr_data[i], arr_color[n]);
-        n += 1;
-        t += 100;
-      }
-    }
-    /** Internal function for draw rectangle
+	histogram(arr_data, arr_color) {
+		let t = 130;
+		let n = 0;
+		for (let i = 0; i < arr_data.length; i++) {
+			let calc = 400 - arr_data[i];
+			this.draw_rect(t, calc, 40, arr_data[i], arr_color[n]);
+			n += 1;
+			t += 100;
+		}
+		}
+    /** Private function for draw rect
      * @param {Number} x origin in x
      * @param {Number} y origin in y
      * @param {Number} d_x size in x
      * @param {Number} d_y size in y
      * @param {String} color color for the rect
      */
-  draw_rect(x, y, d_x, d_y, color) {      
-      this.context.fillStyle = color;
-      this.context.fillRect(x, y, d_x, d_y);
-    }
+	draw_rect(x, y, d_x, d_y, color) {      
+		this.context.fillStyle = color;
+		this.context.fillRect(x, y, d_x, d_y);
+	}
 
-    /**
   /** Internal function for draw words
    * @param {String} color 
    * @param {String} data_font 
@@ -116,7 +112,7 @@ export class Grafik_400 {
     }
 }
 
-export class Grafik_400_lineChart extends Grafik_400 {
+export class Chart_400_lineChart extends Chart_400 {
     /**
      *Creates an instance of Grafik_400_lineChart.
     
@@ -135,8 +131,8 @@ export class Grafik_400_lineChart extends Grafik_400 {
      * @memberof Grafik_400_lineChart
      */
     constructor({ context, background_color, labels, scales, data }) {
-      super({ context, background_color, labels, scales });
-      this.data = data;
+		super({ context, background_color, labels, scales });
+		this.data = data;
     }
 
     /**
@@ -146,30 +142,30 @@ export class Grafik_400_lineChart extends Grafik_400 {
      *
      * @memberof Grafik_400_lineChart
      */
-  draw_point(colorPoint, colorLine) {   
-      for (let i = 0; i < this.data.length; i++) {
-        this.draw_fill_circle(
-          {
-            color: colorPoint,
-            radius: 5,
-            lineWidth: "2",
-          },
-          this.data[i].x,
-          this.data[i].y
-        );
+	draw_point(colorPoint, colorLine) {   
+		for (let i = 0; i < this.data.length; i++) {
+			this.draw_fill_circle(
+				{
+					color: colorPoint,
+					radius: 5,
+					lineWidth: "2",
+				},
+				this.data[i].x,
+				this.data[i].y
+			);
 
-        //draw all lines beetween the points
-        if (i < this.data.length - 1) {
-          this.draw_line(
-            colorLine,
-            this.data[i].x,
-            this.data[i].y,
-            this.data[i + 1].x,
-            this.data[i + 1].y
-          );
-        }
-      }
-    }
+			//draw all lines beetween the points
+			if (i < this.data.length - 1) {
+				this.draw_line(
+					colorLine,
+					this.data[i].x,
+					this.data[i].y,
+					this.data[i + 1].x,
+					this.data[i + 1].y
+				);
+			}
+		}
+	}
 
     /**
      *
@@ -180,11 +176,11 @@ export class Grafik_400_lineChart extends Grafik_400 {
      * @memberof Grafik_400_lineChart
      */
     draw_fill_circle({ color, radius, lineWidth }, dataX, dataY) {
-      this.context.beginPath();
-      this.context.fillStyle = color;
-      this.context.lineWidth = lineWidth;
-      this.context.arc(dataX, dataY, radius, 0, 2 * Math.PI);
-      this.context.fill();
+		this.context.beginPath();
+		this.context.fillStyle = color;
+		this.context.lineWidth = lineWidth;
+		this.context.arc(dataX, dataY, radius, 0, 2 * Math.PI);
+		this.context.fill();
     }
 
   /**
@@ -197,14 +193,14 @@ export class Grafik_400_lineChart extends Grafik_400 {
    * @param {Number} y_dest
    * @memberof Grafik_400_lineChart
    */
-  draw_line(color, x, y, x_dest, y_dest) {
-      this.context.beginPath();
-      this.context.strokeStyle = color;
-      this.context.moveTo(x, y);
-      this.context.lineTo(x_dest, y_dest);
-      this.context.stroke();
-    }
-  }
+	draw_line(color, x, y, x_dest, y_dest) {
+		this.context.beginPath();
+		this.context.strokeStyle = color;
+		this.context.moveTo(x, y);
+		this.context.lineTo(x_dest, y_dest);
+		this.context.stroke();
+		}
+  	}
 
 
 
