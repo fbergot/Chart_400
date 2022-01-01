@@ -17,33 +17,33 @@ export class Chart_400 {
       this.labels = labels;
       
     }
-  /**
-   * Allows display labels on graph
-   * @param {String} data_font
-   * @param {String} color
-   * @memberof Grafik_400
-   */
-  draw_labels(data_font, color) {     
-      let t = 130;
-      for (let i = 0; i < this.labels.length; i++) {
-        this.draw_words(color, data_font, this.labels[i], t, 440);
-        t += 100;
-      }
-    }
+	/**
+	 * Allows display labels on graph
+	 * @param {String} data_font
+	 * @param {String} color
+	 * @memberof Grafik_400
+	 */
+	draw_labels(data_font, color) {     
+		let t = 130;
+		for (let i = 0; i < this.labels.length; i++) {
+			this.draw_words(color, data_font, this.labels[i], t, 440);
+			t += 100;
+		}
+	}
 
-  /**
-   *
-   * Allows display scales for graph
-   * @param {String} data_font
-   * @param {String} color
-   * @memberof Grafik_400
-   */
-  draw_scales(data_font, color) {
-      let t = 400;
-      for (let i = 0; i < this.scales.length; i++) {
-        this.draw_words(color, data_font, this.scales[i], 50, t);
-        t -= 100;
-      }
+	/**
+	 *
+	 * Allows display scales for graph
+	 * @param {String} data_font
+	 * @param {String} color
+	 * @memberof Grafik_400
+	 */
+    draw_scales(data_font, color) {
+        let t = 400;
+        for (let i = 0; i < this.scales.length; i++) {
+          this.draw_words(color, data_font, this.scales[i], 50, t);
+          t -= 100;
+        }
     }
 
     /**
@@ -85,7 +85,7 @@ export class Chart_400 {
 			n += 1;
 			t += 100;
 		}
-		}
+	}
     /** Private function for draw rect
      * @param {Number} x origin in x
      * @param {Number} y origin in y
@@ -144,12 +144,7 @@ export class Chart_400_lineChart extends Chart_400 {
      */
 	draw_point(colorPoint, colorLine) {   
 		for (let i = 0; i < this.data.length; i++) {
-			this.draw_fill_circle(
-				{
-					color: colorPoint,
-					radius: 5,
-					lineWidth: "2",
-				},
+			this.draw_fill_circle({ color: colorPoint, radius: 5, lineWidth: "2" },
 				this.data[i].x,
 				this.data[i].y
 			);
@@ -168,8 +163,7 @@ export class Chart_400_lineChart extends Chart_400 {
 	}
 
     /**
-     *
-     *
+	 * Draw fill circle
      * @param {{color: String, radius: Number, lineWidth: String}} { color, radius, lineWidth }
      * @param {Number} dataX
      * @param {Number} dataY
@@ -184,8 +178,7 @@ export class Chart_400_lineChart extends Chart_400 {
     }
 
   /**
-   *
-   *
+   * Draw line
    * @param {String} color
    * @param {Number} x
    * @param {Number} y
@@ -199,8 +192,8 @@ export class Chart_400_lineChart extends Chart_400 {
 		this.context.moveTo(x, y);
 		this.context.lineTo(x_dest, y_dest);
 		this.context.stroke();
-		}
-  	}
+	}
+}
 
 
 
