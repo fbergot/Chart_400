@@ -5,3 +5,4 @@ Can create two types of chart of 400px:
     -histogram
 
 Can modify font-family and colors (line and background)
+Ex app.js

@@ -1,27 +1,21 @@
 /**
- *
- *
- * @export
- * @class Grafik_400
+ * Create histogram chart (400px)
  */
 export class Chart_400 {
     /**
      *Creates an instance of Grafik_400.
      * @param {{context:CanvasRenderingContext2D, background_color:String,labels:Array<String>, scales:String}} { context, background_color, labels, scales }
-     * @memberof Grafik_400
      */
     constructor({ context, background_color, labels, scales }) {
       this.context = context;
       this.background_color = background_color;
+      this.labels = labels;     
       this.scales = scales;
-      this.labels = labels;
-      
     }
 	/**
 	 * Allows display labels on graph
 	 * @param {String} data_font
 	 * @param {String} color
-	 * @memberof Grafik_400
 	 */
 	draw_labels(data_font, color) {     
 		let t = 130;
@@ -32,11 +26,9 @@ export class Chart_400 {
 	}
 
 	/**
-	 *
 	 * Allows display scales for graph
 	 * @param {String} data_font
 	 * @param {String} color
-	 * @memberof Grafik_400
 	 */
     draw_scales(data_font, color) {
         let t = 400;
@@ -86,7 +78,7 @@ export class Chart_400 {
 			t += 100;
 		}
 	}
-    /** Private function for draw rect
+    /** Internal function for draw rect
      * @param {Number} x origin in x
      * @param {Number} y origin in y
      * @param {Number} d_x size in x
@@ -114,8 +106,7 @@ export class Chart_400 {
 
 export class Chart_400_lineChart extends Chart_400 {
     /**
-     *Creates an instance of Grafik_400_lineChart.
-    
+     * Creates an instance of Chart_400_lineChart  
      * @param {{
                 context:CanvasRenderingContext2D,
                 background_color:String,
@@ -128,7 +119,6 @@ export class Chart_400_lineChart extends Chart_400 {
      *  labels => Array for labels data
      *  scales => Array for scales data
      *  data =>  Array of data (x and y) for display in a graph
-     * @memberof Grafik_400_lineChart
      */
     constructor({ context, background_color, labels, scales, data }) {
 		super({ context, background_color, labels, scales });
@@ -136,11 +126,9 @@ export class Chart_400_lineChart extends Chart_400 {
     }
 
     /**
-     * Public method for draw points in graph
+     * draw points in chart
      * @param {String} colorPoint
      * @param {String} colorLine
-     *
-     * @memberof Grafik_400_lineChart
      */
 	draw_point(colorPoint, colorLine) {   
 		for (let i = 0; i < this.data.length; i++) {
@@ -149,7 +137,7 @@ export class Chart_400_lineChart extends Chart_400 {
 				this.data[i].y
 			);
 
-			//draw all lines beetween the points
+			//draw all lines beetween points
 			if (i < this.data.length - 1) {
 				this.draw_line(
 					colorLine,
@@ -163,11 +151,10 @@ export class Chart_400_lineChart extends Chart_400 {
 	}
 
     /**
-	 * Draw fill circle
-     * @param {{color: String, radius: Number, lineWidth: String}} { color, radius, lineWidth }
+	 * Draw fill circle/point
+     * @param {{color: String, radius: Number, lineWidth: String}}
      * @param {Number} dataX
      * @param {Number} dataY
-     * @memberof Grafik_400_lineChart
      */
     draw_fill_circle({ color, radius, lineWidth }, dataX, dataY) {
 		this.context.beginPath();
@@ -184,7 +171,6 @@ export class Chart_400_lineChart extends Chart_400 {
    * @param {Number} y
    * @param {Number} x_dest
    * @param {Number} y_dest
-   * @memberof Grafik_400_lineChart
    */
 	draw_line(color, x, y, x_dest, y_dest) {
 		this.context.beginPath();
