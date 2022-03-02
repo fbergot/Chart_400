@@ -5,4 +5,7 @@ Can create two types of chart of 400px:
     -histogram
 
 Can modify font-family and colors (line and background)
-Ex app.js
+
+Ex app.js :
+
+![example](https://github.com/fbergot/Chart_400/blob/main/example.png)
